@@ -10,7 +10,7 @@ Currently assuming Nature article format for ease of programming.
 Usage is 'python ris2bib.py /path/to/references/file.ris (-v)'
 
 D.P O'Hanlon
-23/10/2011
+23/11/2011
 
 """
 
