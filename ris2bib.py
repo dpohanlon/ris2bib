@@ -7,7 +7,7 @@ ris2bib.py
 Takes .ris files as first argument in the form 'name.ris' and outputs files in the bibtex format in the form 'name.bib'.
 Currently assuming Nature article format for ease of programming.
 
-Usage is 'python ris2bib.py /path/to/references/file.ris (-v)'
+Usage is python ris2bib.py [FILE...]
 
 D.P O'Hanlon
 23/11/2011
@@ -35,10 +35,6 @@ def r2b_read(ris,argv):
 	entries['authors']=list()
 	verbose = False
 
-	if len(argv)==3:
-		if argv[2]=='-v':
-			verbose = True
-
 	for line in ris:
 		if re.match("PY",line):
 			entries['year'] = line[6:10]
@@ -58,7 +54,7 @@ def r2b_read(ris,argv):
 			entries['endpage'] = line[6:-1]
 		elif re.match("UR",line):
 			entries['url'] = line[6:-1]
-		elif verbose==True:
+		else
 			print 'Unparsed line: ' + line[:-1]
 	return entries
 		
@@ -82,4 +78,4 @@ def r2b_write(entries,bib_filename):
 	bib.close()			
 
 if __name__ == '__main__':
-	main()
+	main()	
