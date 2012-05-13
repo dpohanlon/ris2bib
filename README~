@@ -1,7 +1,0 @@
-ris2bib.py
-
-Takes .ris files as first argument in the form 'name.ris' and outputs files in the bibtex format in the form 'name.bib'.
-Currently assuming Nature article format for ease of programming.
-
-D.P O'Hanlon
-19/10/2011
