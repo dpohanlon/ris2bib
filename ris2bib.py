@@ -37,7 +37,6 @@ Sun 13 May 2012 14:10:52 BST
 import sys
 import os
 import re
-import string
 
 def main(argv = sys.argv):
 
@@ -105,20 +104,20 @@ def r2b_write(entries,bib_filename):
 
 	bib = open(bib_filename,'w+') # strip and replace extension
 
-	bib.write('@ARTICLE{' + entries['authors'][0][:string.find(entries['authors'][0], ',')] + \
+	bib.write('@ARTICLE{' + entries['authors'][0][:entries['authors'][0].index(',')] + \
 		str(entries['year']) + ",") # get surname of first author slicing to ','
-	bib.write('\nauthor=\t\"'+entries['authors'][0])
+	bib.write('\n\tauthor=\t\"'+entries['authors'][0])
 	for entry in entries['authors'][1:]:
 		bib.write(" and " + entry)
 	bib.write("\",")
-	bib.write('\nyear=\t\"'+ entries['year'] + "\",")
-	bib.write("\ntitle=\t\"" + entries['title'] + "\",")
-	bib.write("\njournal=\t\"" + entries['journal'] + "\",")
-	bib.write("\nvolume=\t\"" + entries['volume'] + "\",")
-	bib.write("\nnumber=\t\"" + entries['number'] + "\",")
-	bib.write("\npages=\t\"" + entries['startpage'] + "--" + \
+	bib.write('\n\tyear=\t\"'+ entries['year'] + "\",")
+	bib.write("\n\ttitle=\t\"" + entries['title'] + "\",")
+	bib.write("\n\tjournal=\t\"" + entries['journal'] + "\",")
+	bib.write("\n\tvolume=\t\"" + entries['volume'] + "\",")
+	bib.write("\n\tnumber=\t\"" + entries['number'] + "\",")
+	bib.write("\n\tpages=\t\"" + entries['startpage'] + "--" + \
 		entries['endpage'] + "\",")
-	bib.write("\nurl=\t\"" + entries['url'] + "\",")
+	bib.write("\n\turl=\t\t\"" + entries['url'] + "\",")
 	bib.write("\n}\n")
 
 	bib.close()			
